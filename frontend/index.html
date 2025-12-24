@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Dubbing GUI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-dark bg-primary mb-4">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1">AI Dubbing GUI</span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-white">
+                        <h5 class="card-title mb-0">Start New Dubbing Job</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="dubbing-form">
+                            <div class="mb-3">
+                                <label for="file" class="form-label">Upload Audio/Video</label>
+                                <input type="file" id="file" class="form-control" accept="audio/*,video/*" required>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="source_lang" class="form-label">Source Language</label>
+                                    <select id="source_lang" class="form-select">
+                                        <option value="en">English</option>
+                                        <option value="hi">Hindi</option>
+                                        <option value="es">Spanish</option>
+                                        <option value="fr">French</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="target_lang" class="form-label">Target Language</label>
+                                    <select id="target_lang" class="form-select">
+                                        <option value="hi">Hindi</option>
+                                        <option value="en">English</option>
+                                        <option value="es">Spanish</option>
+                                        <option value="fr">French</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="voice_id" class="form-label">Voice Profile</label>
+                                <select id="voice_id" class="form-select">
+                                    <option value="v1">Voice 1 (Male)</option>
+                                    <option value="v2">Voice 2 (Female)</option>
+                                    <option value="v3">Voice 3 (Natural)</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="custom_text" class="form-label">Custom Text (Optional)</label>
+                                <textarea id="custom_text" class="form-control" rows="2" placeholder="Enter text to dub instead of transcript..."></textarea>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary" id="start-btn">Start Dubbing</button>
+                                <button type="reset" class="btn btn-outline-secondary" id="reset-btn">Reset</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-7">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">Active Jobs</h5>
+                        <span class="badge bg-secondary" id="job-count">0 Jobs</span>
+                    </div>
+                    <div class="card-body p-0">
+                        <div id="jobs-list" class="list-group list-group-flush">
+                            <div class="p-5 text-center text-muted" id="no-jobs">
+                                <p>No active jobs. Upload a file to start.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
